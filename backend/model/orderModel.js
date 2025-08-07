@@ -11,7 +11,9 @@ const orderModel = mongoose.Schema({
     },
     status: {
         type: String,
-        require: true
+        require: true,
+        default: "Order placed",
+        enum: ["Order placed","out for delivery","Order delivererd","Canceled"]
     },
     total_price: {
          type: Number,
@@ -21,7 +23,7 @@ const orderModel = mongoose.Schema({
         type: String,
         require: true
     }
-})
+},{timestamps: true})
 
 const Order = mongoose.model("Order", orderModel)
 export default Order
